@@ -10,7 +10,7 @@ const io = require("socket.io")(server, {
 });
 
 app.use(cors());
-const PORT = process.env.port || 5000;
+
 
 app.get("/", (req, res)=>{
     res.send("Server is running");
@@ -30,6 +30,8 @@ io.on("connection", (socket)=>{
 
 })
 
-server.listen(PORT, ()=>{
+const PORT = process.env.port || 5000;
+
+server.listen(PORT, "0.0.0.0", ()=>{
     console.log(`server is running on port ${PORT}`);
 })
